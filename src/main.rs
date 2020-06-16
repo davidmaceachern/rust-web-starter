@@ -13,7 +13,7 @@ async fn main() -> Result<(), Error>{
     
     let db_url = std::env::var("DATABASE_URL")?;
     let db_pool: PgPool  = Pool::new(&db_url).await?;
-    let rows = query!("select 1 as one").fetch(&db_pool).await?;
+    let rows = query!("select 1 as one").fetch_one(&db_pool).await?;
     dbg!(rows);
 
     let mut app = tide::new();
