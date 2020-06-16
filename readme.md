@@ -2,9 +2,9 @@
 
 Rest API for bootstrapping projects, written in Rust.
 
-- Pretty-printing Logging with `Femme`.
+- Pretty-printed Logging with `Femme`.
 - Error Handling Pattern with `Thiserror`.
-- SQL Database Connectivity with `SQLX`.
+- Postgres SQL Database Connectivity with `SQLX`.
 
 ## Quick Start
 
