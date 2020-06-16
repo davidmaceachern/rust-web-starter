@@ -22,7 +22,7 @@ async fn main() -> Result<(), Error>{
     app.at("/").get(|req: Request<State>| async move { 
         let db_pool:&PgPool = &req.state().db_pool;
 
-        let rows = query!("select 1 as one").fetch_one(db_pool).await?;
+        let rows = query!("select 1 as one where 1 = 2").fetch_one(db_pool).await?;
         dbg!(rows);
 
         Ok("Hello world!") 
@@ -30,7 +30,7 @@ async fn main() -> Result<(), Error>{
 
     // app.at("/status").get(async move { Ok(rows) });
     
-    app.listen("127.0.0.1:8000").await?;
+    app.listen("127.0.0.1:8080").await?;
 
     Ok(())
 }
