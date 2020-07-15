@@ -1,4 +1,4 @@
-# Rust Web Starter
+# Rust Web Template
 
 Rest API for bootstrapping projects, written in Rust.
 
