@@ -8,8 +8,8 @@ Examples of web application concepts to get started, written in Rust.
 
 Workspace containing individual application components (crates).
 
-./src/data-collector
-./src/database
+- ./src/data-collector
+- ./src/database
 
 ## Quick Start
 
