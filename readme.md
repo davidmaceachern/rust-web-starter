@@ -1,6 +1,6 @@
 # Rust Web Template
 
-Rest API for bootstrapping projects, written in Rust.
+Examples of web application concepts to get started, written in Rust.
 
 - Pretty-printed Logging with `Femme`.
 - Error Handling Pattern with `Thiserror`.
