@@ -6,7 +6,17 @@ Examples of web application concepts to get started with, written in Rust to dem
 - Error Handling Pattern with `Thiserror`.
 - Postgres SQL Database Connectivity with `SQLX`.
 
+Workspace containing individual application components (crates).
+
+- ./src/data-collector
+- ./src/database
+
 ## Quick Start
+
+Data collector will fetch some data, for now this can be tested by running
+`cargo run --bin data-collector`
+which will build and run only that specific component.
+
 
 Run a database in a container
 
