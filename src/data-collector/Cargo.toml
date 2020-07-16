@@ -8,3 +8,8 @@ edition = "2018"
 
 [dependencies]
 chrono = "0.4.13"
+dotenv = "0.15.0"
+femme = "2.1.0"
+kv-log-macro = "1.0.7"
+async-std = "1.6.2"
+surf = "1.0.3"

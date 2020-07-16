@@ -1,3 +1,7 @@
+# Requirements
+
+This is not as high level as it might be, nonetheless you can [read more about this here...](https://martinfowler.com/bliki/GivenWhenThen.html). Normally this is done to construct behaviour style tests.
+
 ## Given the application has run when a file exists then it should check the last modified date so as not to overwrite the data.
 
 1. Google for a `iso date now`
@@ -12,4 +16,15 @@
 10. Checking the standard library and there doesn't seem to be any date handling functions aside from [Duration](https://doc.rust-lang.org/std/time/index.html)
 11. Running `cargo add chrono` installs a crate which can handle creating datetimes for us.
 13. We want to write the time once we've generated it so that is also possible using this [method](https://doc.rust-lang.org/rust-by-example/std_misc/file/create.html)
-14. Generating the current time now, writing to the file throws a type error because the write_all method is expecting out date to by in bytes or `&[u8]`
+14. Generating the current time now, writing to the file throws a type error because the write_all method is expecting out date to be in bytes or `&[u8]`
+15. Converted to bytes using `as` method, successfully saves the file.
+
+## Given the secret is set and the api id is set when the application is run then endpoint should be called and the data returned.
+
+1. `cargo add dotenv`
+2. `use dotenv;`
+3. Set the key and use `std::env::var` to obtain the environment variables that have been set by calling `dotenv`.
+4. create seperate functions for each operation and return the val
+5. watching out for the match arm types having to be the same, used panic macro to get around this.
+6. Added femme logging as it might be useful later.
+7. started writing fetching data function, also added return types since the get functions now return something, missed a `<` in the return type but things compiled once that was added in.
