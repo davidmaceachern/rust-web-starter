@@ -1,6 +1,6 @@
 # Rust Web Template
 
-Examples of web application concepts to get started, written in Rust.
+Examples of web application concepts to get started with, written in Rust to demonstrate some knowledge.
 
 - Pretty-printed Logging with `Femme`.
 - Error Handling Pattern with `Thiserror`.
@@ -32,3 +32,9 @@ git clone git@github.com:davidmaceachern/rust-web-starter.git
 cd /rust-web-starter
 cargo run
 ```
+
+## License
+
+Licensed under either of Apache License, Version 2.0 or MIT license at your option.
+
+Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in this crate by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions. 
