@@ -3,8 +3,8 @@
 use async_std::task;
 use dotenv;
 use kv_log_macro as log;
-use std::fs::File;
 use std::env;
+use std::fs::File;
 use std::io::prelude::*;
 use std::path::Path;
 // use chrono::{DateTime, FixedOffset, TimeZone, Utc};
@@ -19,14 +19,14 @@ fn main() -> std::io::Result<()> {
     fetch_data(id, secret);
     // write_json();
     update_last_modified();
-    Ok(())        
+    Ok(())
 }
 
 fn write_json() {
     todo!()
 }
 
-fn fetch_data(id: String, secret: String) -> Result<(), surf::Exception>  {
+fn fetch_data(id: String, secret: String) -> Result<(), surf::Exception> {
     println!("id is: {} and secret is  {}", id, secret);
     task::block_on(async {
         let uri = "https://testnet-api.phemex.com/v1/md/ticker/24hr/all";
@@ -41,7 +41,7 @@ fn get_id() -> String {
     let name = "API_ID";
     let mut val = match env::var(name) {
         Err(why) => panic!("couldn't retrieve: {}", why),
-        Ok(val) => val
+        Ok(val) => val,
     };
     val
 }
@@ -51,7 +51,7 @@ fn get_secret() -> String {
     let name = "API_SECRET";
     let mut val = match env::var(name) {
         Err(why) => panic!("couldn't retrieve: {}", why),
-        Ok(val) => val    
+        Ok(val) => val,
     };
     val
 }
@@ -63,7 +63,7 @@ fn update_last_modified() {
         Err(why) => panic!("couldn't create {}: {}", display, why),
         Ok(file) => file,
     };
-    
+
     match file.write_all(Utc::now().to_string().as_bytes()) {
         Err(why) => panic!("couldn't write to {}: {}", display, why),
         Ok(_) => println!("successfully wrote to {}", display),
