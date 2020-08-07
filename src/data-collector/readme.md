@@ -29,3 +29,56 @@ This is not as high level as it might be, nonetheless you can [read more about t
 5. watching out for the match arm types having to be the same, used panic macro to get around this.
 6. Added femme logging as it might be useful later.
 7. started writing fetching data function, also added return types since the get functions now return something, missed a `<` in the return type but things compiled once that was added in.
+
+## Given the has been called when the data is returned then it is written to a file
+1. Tried creating a writer and passing it to serde: 
+
+``` Rust
+fn write_json<W: io::Write, T: serde::Serialize>(data: &str) -> serde_json::Result<()> {
+    let writer = &File::create("/tmp/phemex-response.json");
+    serde_json::ser::to_writer(&mut writer, &data)?;
+    Ok(())
+}
+```
+but this has thrown errors that:
+
+``` Bash
+error[E0277]: the trait bound `&std::result::Result<std::fs::File, std::io::Error>: std::io::Write` is not satisfied
+    --> src/data-collector/src/main.rs:52:5
+     |
+52   |     serde_json::ser::to_writer(&mut writer, &data)?;
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `std::io::Write` is not implemented for `&std::result::Result<std::fs::File, std::io::Error>`
+     |
+    ::: /home/davidmaceachern/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_json-1.0.57/src/ser.rs:2154:8
+     |
+2154 |     W: io::Write,
+     |        --------- required by this bound in `serde_json::ser::to_writer`
+     |
+     = note: required because of the requirements on the impl of `std::io::Write` for `&mut &std::result::Result<std::fs::File, std::io::Error>`
+```
+2. So a [search](https://www.reddit.com/r/rust/comments/9e793y/question_best_way_to_append_data_to_a_json_file/) has revealed another way to try is dumping as a string and writing this to a file since I already know how to write a string to a file. This might not be the prettiest way to do so however.
+
+It appears the file doesn't exist so, checked file positioning, checked whether file can be created at all, why can't it create it? Try converting now() to iso format and string name?
+
+``` Bash
+running 2 tests
+test tests::test_check_last_modified ... ok
+test tests::test_write_json ... FAILED
+
+failures:
+
+---- tests::test_write_json stdout ----
+thread 'tests::test_write_json' panicked at 'couldn't create ../tmp/2020-08-06 21:40:01.541467293 UTC.json: No such file or directory (os error 2)', src/data-collector/src/main.rs:56:21
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    tests::test_write_json
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out
+
+error: test failed, to rerun pass '--bin data-collector'
+[Finished running. Exit status: 101]
+```
+
+

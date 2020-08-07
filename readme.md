@@ -17,7 +17,6 @@ Data collector will fetch some data, for now this can be tested by running
 `cargo run --bin data-collector`
 which will build and run only that specific component.
 
-
 Run a database in a container
 
 ```
@@ -33,6 +32,16 @@ docker run --rm   \
 docker exec -i postgres psql \
 -U postgres \
 -c "CREATE DATABASE dev WITH ENCODING='UTF8' OWNER=postgres;"
+```
+
+Run s3 in a container.
+
+```
+docker run -p 9000:9000 \
+  -e "MINIO_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE" \
+  -e "MINIO_SECRET_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY" \
+  minio/minio server /data
+
 ```
 
 Run the server.
