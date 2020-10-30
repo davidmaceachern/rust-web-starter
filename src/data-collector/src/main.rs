@@ -183,6 +183,8 @@ mod tests {
         assert_eq!(check_last_modified(), true);
     }
 }
+
+
 // let r: PhemexResponse = serde_json::from_str(data)?;
 // let writer = &File::create("/tmp/phemex-response.json");
 //let w = serde_json::to_writer(&File::create("/tmp/phemex-response.json"), data);
