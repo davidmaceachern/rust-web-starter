@@ -1,59 +1,22 @@
 # Rust Web Template
 
-Examples of web application concepts to get started with, written in Rust to demonstrate some knowledge.
+Examples of web/distributed application concepts to get started with.
 
-- Pretty-printed Logging with `Femme`.
-- Error Handling Pattern with `Thiserror`.
-- Postgres SQL Database Connectivity with `SQLX`.
+## Development
 
-Workspace containing individual application components (crates).
+In seperate processes/terminal window run the services that we will be developing against.
 
-- ./src/data-collector
-- ./src/database
+`$ bash run-s3.sh`
 
-## Quick Start
+`$ bash run-dynamodb.sh`
 
-Data collector will fetch some data, for now this can be tested by running
-`cargo run --bin data-collector`
-which will build and run only that specific component.
+Begin by interacting with these services using the code in `/client/src/main.rs`.
 
-Run a database in a container
-
-```
-# Create a directory to store the data file
-mkdir -p $HOME/docker/volumes/postgres
-# Run a container, should download image if none exists
-docker run --rm   \
---name postgres \
--e POSTGRES_PASSWORD=test \
--d -p 5432:5432 \
--v $HOME/docker/volumes/postgres:/var/lib/postgresql/data  postgres
-# Create a database to store data in
-docker exec -i postgres psql \
--U postgres \
--c "CREATE DATABASE dev WITH ENCODING='UTF8' OWNER=postgres;"
-```
-
-Run s3 in a container.
-
-```
-docker run -p 9000:9000 \
-  -e "MINIO_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE" \
-  -e "MINIO_SECRET_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY" \
-  minio/minio server /data
-
-```
-
-Run the server.
-
-```
-git clone git@github.com:davidmaceachern/rust-web-starter.git
-cd /rust-web-starter
-cargo run
-```
+Run client code as we develop by using `cd client && cargo watch -s 'cargo build'`
 
 ## License
 
 Licensed under either of Apache License, Version 2.0 or MIT license at your option.
 
-Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in this crate by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions. 
+Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in this crate by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions.
+
