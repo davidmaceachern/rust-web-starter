@@ -1,4 +1,13 @@
-# Rust Web Template
+<div align="center">
+   ⛈️🦀
+</div>
+
+<h1 align="center">
+  Rust Web Template
+</h1>
+
+<br />
+
 
 Examples of web/distributed application concepts to get started with, written in
 Rust.
@@ -6,7 +15,7 @@ Rust.
 ## Features
 
 - Uses the Tokio runtime to collect data from the Phemex Exchange and save it to
-  an Minio (s3) bucket.
+  a Minio (s3) bucket.
 
 ## Structure
 
