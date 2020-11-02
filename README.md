@@ -6,16 +6,16 @@
   Rust Web Template
 </h1>
 
+<p align="center">
+   Examples of <a href="https://aws.amazon.com/builders-library/challenges-with-distributed-systems/">distributed</a> application concepts to get started with, written in <a href="https://www.rust-lang.org/">Rustlang</a> 
+</p>
+
 <br />
-
-
-Examples of web/distributed application concepts to get started with, written in
-Rust.
 
 ## Features
 
-- Uses the Tokio runtime to collect data from the Phemex Exchange and save it to
-  a Minio (s3) bucket.
+- Uses the [Tokio](https://tokio.rs/) runtime to collect data from the [Phemex Exchange](https://phemex.com/) and save it to
+  a [Minio](https://min.io/) [S3](https://aws.amazon.com/s3/) bucket.
 
 ## Structure
 
