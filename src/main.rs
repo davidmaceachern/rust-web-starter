@@ -7,8 +7,8 @@ use serde::{Deserialize, Serialize};
 use serde_json;
 use std::env;
 use std::fs::File;
-use std::io::prelude::*;
 use std::io;
+use std::io::prelude::*;
 use std::io::Write;
 use std::path::Path;
 // use chrono::{DateTime, FixedOffset, TimeZone, Utc};
@@ -16,21 +16,21 @@ use chrono::Utc;
 
 #[derive(Serialize, Deserialize)]
 struct PhemexResponse {
-   askEp: i32,
-   bidEp:i32,
-   fundingRateEr: i32,
-   highEp: i32,
-   indexEp: i32,
-   lastEp: i32,
-   lowEp: i32,
-   markEp: i32,
-   openEp: i32,
-   openInterest: i32,
-   predFundingRateEr: i32,
-   symbol: String,
-   timestamp: i32,
-   turnoverEv: i32,
-   volume: i32,
+    askEp: i32,
+    bidEp: i32,
+    fundingRateEr: i32,
+    highEp: i32,
+    indexEp: i32,
+    lastEp: i32,
+    lowEp: i32,
+    markEp: i32,
+    openEp: i32,
+    openInterest: i32,
+    predFundingRateEr: i32,
+    symbol: String,
+    timestamp: i32,
+    turnoverEv: i32,
+    volume: i32,
 }
 
 fn main() -> std::io::Result<()> {
@@ -59,7 +59,10 @@ fn write_json(data: &str) -> bool {
     };
     match file.write_all(content.as_bytes()) {
         Err(why) => panic!("couldn't write to {}: {}", display, why),
-        Ok(_) => { log::info!("successfully wrote to {}", display); true },
+        Ok(_) => {
+            log::info!("successfully wrote to {}", display);
+            true
+        }
     }
 }
 
@@ -134,7 +137,7 @@ enum Error {
 #[cfg(test)]
 mod tests {
     use super::*;
-     #[test]
+    #[test]
     fn test_write_json() {
         let data: &str = r#"
             { "error": null,
@@ -183,7 +186,6 @@ mod tests {
         assert_eq!(check_last_modified(), true);
     }
 }
-
 
 // let r: PhemexResponse = serde_json::from_str(data)?;
 // let writer = &File::create("/tmp/phemex-response.json");
