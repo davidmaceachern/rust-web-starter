@@ -17,19 +17,28 @@
 - Uses the [Tokio](https://tokio.rs/) runtime to collect data from the [Phemex Exchange](https://phemex.com/) and save it to
   a [Minio](https://min.io/) [S3](https://aws.amazon.com/s3/) bucket.
 
+## Goals
+
+- Build a batch process, which can be considered an "offline distributed system" as opposed to a real time analytics pipeline.
+- Attempt to map existing knowledge into a Rust application, consolidate skills and test Rust's readiness for this level of the stack.
+- Avoid being too opinionated about where it will be deployed.
+- Evolve to a state which it can be used to build out other ideas that I have.
+
 ## Structure
 
 ```
-|-- Cargo.toml            <--- Where we can define application dependencies.
-|-- client                <--- Logic for tests and the app to interface with infrastructure.
+|-- Cargo.toml            <--- Where we can define our workspace configuration.
+|-- client                <--- Logic for the app and tests to interface with infrastructure.
 |   |-- Cargo.toml        <--- Where we can define client dependencies.
 |   `-- src
 |       `-- main.rs       <--- Binary containing the client logic.
+|-- collector             <--- Logic for tests and the app to interface with infrastructure.
+|   |-- Cargo.toml        <--- Where we can define collector dependencies.
+|   `-- src
+|       `-- main.rs       <--- Binary containing the collector logic.
 |-- readme.md
 |-- run-dynamodb.sh       <--- Bash script to run a local Dynamodb container.
 |-- run-s3.sh             <--- Bash script to run a local Minio (S3) container.
-`-- src                   <--- Rust-web-template source, our main business logic.
-    `-- main.rs           <--- The binary containing the application logic.
 ```
 
 ## Development
@@ -42,7 +51,14 @@ In seperate processes/terminal window run the services that we will be developin
 
 Begin by interacting with these services using the code in `/client/src/main.rs`.
 
-Run client code as we develop by using `cd client && cargo watch -s 'cargo build'`
+Run syntax checking on client code as we develop by using `cd client && cargo watch -s 'cargo build'`
+
+Run the client.
+
+`$ cargo run --bin client`
+
+Run the collector.
+`$ cargo run --bin collector`
 
 Install new packages using `cargo add`.
 

@@ -62,6 +62,10 @@ impl Bucket {
     }
 }
 
+fn key(folder: String, uuid: String, ext: &str) -> String {
+        folder + &uuid.to_owned() + ext
+}
+
 #[tokio::main]
 async fn main() -> Result<(), anyhow::Error> {
     let region = Region::Custom {
@@ -71,7 +75,7 @@ async fn main() -> Result<(), anyhow::Error> {
     let access_key = String::from("AKIAIOSFODNN7EXAMPLE");
     let secret_key = String::from("wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY");
     let bucket = Bucket::new(region, access_key, secret_key, "phemex");
-    // bucket.create().await;
+    // bucket.create().await; # TODO: move this
 
     let mut tmpfile = NamedTempFile::new()?;
     let mut open_tmpfile = tmpfile.reopen()?;
@@ -81,14 +85,10 @@ async fn main() -> Result<(), anyhow::Error> {
     let body: String = res.text().await?;
     tmpfile.write_all(body.as_bytes())?;
 
-    fn key() -> String {
-        let folder = String::from("collector/");
-        let mut uuid = Uuid::new_v4().to_string();
-        let ext = ".json";
-        folder + &uuid.to_owned() + ext
-    }
-
-    let object_key: String = key();
+    let folder = String::from("collector/");
+    let mut uuid = Uuid::new_v4().to_string();
+    let ext = ".json";
+    let object_key: String = key(folder, uuid, ext);
 
     let mut contents: Vec<u8> = Vec::new();
     match open_tmpfile.read_to_end(&mut contents) {
@@ -98,4 +98,17 @@ async fn main() -> Result<(), anyhow::Error> {
         }
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn test_key() {
+        let folder = String::from("collector/");
+        let mut uuid = String::from("c7ca4c34-178b-4bc1-880b-c81690fcdfda");
+        let ext = ".json";
+        assert_eq!(key(folder, uuid, ext), "collector/c7ca4c34-178b-4bc1-880b-c81690fcdfda.json");
+    }
+    // TODO: e2e test for this function
 }
