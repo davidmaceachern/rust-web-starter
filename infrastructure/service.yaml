@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: minio
+  labels:
+    example: rust-web-template
 spec:
   type: LoadBalancer
   ports:
