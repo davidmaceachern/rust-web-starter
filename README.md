@@ -41,7 +41,8 @@
 |   |-- Cargo.toml        <--- Where we can define collector dependencies.
 |   `-- src
 |       `-- main.rs       <--- Binary containing the collector logic.
-|-- readme.md
+|-- infrastructure/       <--- Example of how to deploy to Kubernetes
+|-- README.md             <--- This file that you are reading.
 |-- run-dynamodb.sh       <--- Bash script to run a local Dynamodb container.
 |-- run-s3.sh             <--- Bash script to run a local Minio (S3) container.
 ```
@@ -68,6 +69,16 @@ Run the collector.
 Install new packages using `cargo add`.
 
 Format code using `cargo fmt`.
+
+## Deployment
+
+Kubernetes enables deployment to any provider that has Kubernetes installed. The following steps assume that a cluster has been installed.
+
+1. Check that a node is running on the cluster `$ kubectl get node`.
+2. Claim some data from the host system for Minio `$ kubectl create -f ./infrastructure/persistent-volume-claim.yaml`.
+3. Create the deployment `kubectl create -f ./infrastructure/deployment.yaml`.
+4. Create the Minio service `kubectl create -f ./infrastructure/service.yaml`.
+5. List to see what exists `kubectl get all`, or view the Minio access panel in the browser `http://127.0.0.1:9000/minio/login`.
 
 ## License
 
