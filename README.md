@@ -10,7 +10,6 @@
    Examples of <a href="https://aws.amazon.com/builders-library/challenges-with-distributed-systems/">distributed</a> application concepts to get started with, written in <a href="https://www.rust-lang.org/">Rustlang</a> 
 </p>
 
-<br />
 <div align="center">
   <a alt="GitHub Actions" href="https://github.com/softprops/devtogo/actions">
     <img src="https://github.com/softprops/devtogo/workflows/Main/badge.svg"/>
