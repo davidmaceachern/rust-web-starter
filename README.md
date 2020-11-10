@@ -11,8 +11,8 @@
 </p>
 
 <div align="center">
-  <a alt="GitHub Actions" href="https://github.com/softprops/devtogo/actions">
-    <img src="https://github.com/softprops/devtogo/workflows/Main/badge.svg"/>
+  <a alt="GitHub Actions" href="https://github.com/davidmaceachern/rust-web-template/actions">
+    <img src="https://github.com/davidmaceachern/rust-web-template/workflows/Main/badge.svg"/>
   </a>
 </div>
 
