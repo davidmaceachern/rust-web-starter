@@ -79,6 +79,7 @@ Kubernetes enables deployment to any provider that has Kubernetes installed. The
 3. Create the deployment `kubectl create -f ./infrastructure/deployment.yaml`.
 4. Create the Minio service `kubectl create -f ./infrastructure/service.yaml`.
 5. List to see what exists `kubectl get all`, or view the Minio access panel in the browser `http://127.0.0.1:9000/minio/login`.
+6. Delete `kubectl delete all -l example=rust-web-template`
 
 ## License
 
