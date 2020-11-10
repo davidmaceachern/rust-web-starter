@@ -63,7 +63,7 @@ impl Bucket {
 }
 
 fn key(folder: String, uuid: String, ext: &str) -> String {
-        folder + &uuid.to_owned() + ext
+    folder + &uuid.to_owned() + ext
 }
 
 #[tokio::main]
@@ -108,7 +108,10 @@ mod tests {
         let folder = String::from("collector/");
         let mut uuid = String::from("c7ca4c34-178b-4bc1-880b-c81690fcdfda");
         let ext = ".json";
-        assert_eq!(key(folder, uuid, ext), "collector/c7ca4c34-178b-4bc1-880b-c81690fcdfda.json");
+        assert_eq!(
+            key(folder, uuid, ext),
+            "collector/c7ca4c34-178b-4bc1-880b-c81690fcdfda.json"
+        );
     }
     // TODO: e2e test for this function
 }

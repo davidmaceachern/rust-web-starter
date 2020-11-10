@@ -19,7 +19,7 @@
 
 ## Goals
 
-- Build a batch process, which can be considered an "offline distributed system" as opposed to a real time analytics pipeline.
+- Build a batch process, which is considered to be a "offline distributed system" as opposed to a real time analytics pipeline.
 - Attempt to map existing knowledge into a Rust application, consolidate skills and test Rust's readiness for this level of the stack.
 - Avoid being too opinionated about where it will be deployed.
 - Evolve to a state which it can be used to build out other ideas that I have.
@@ -51,7 +51,7 @@ In seperate processes/terminal window run the services that we will be developin
 
 Begin by interacting with these services using the code in `/client/src/main.rs`.
 
-Run syntax checking on client code as we develop by using `cd client && cargo watch -s 'cargo build'`
+Run syntax checking on client code as we develop by using `cd collector && cargo watch -s 'cargo build'`
 
 Run the client.
 
