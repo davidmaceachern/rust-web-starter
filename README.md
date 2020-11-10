@@ -11,11 +11,10 @@
 </p>
 
 <div align="center">
-  <a alt="GitHub Actions" href="https://github.com/davidmaceachern/rust-web-template/actions">
-    <img src="https://github.com/davidmaceachern/rust-web-template/workflows/Main/badge.svg"/>
+  <a alt="GitHub Workflow Status" href="https://github.com/davidmaceachern/rust-web-template/actions">
+    <img  src="https://img.shields.io/github/workflow/status/davidmaceachern/rust-web-template/Rust">
   </a>
 </div>
-
 <br />
 
 ## Features
