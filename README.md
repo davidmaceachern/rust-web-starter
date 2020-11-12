@@ -37,7 +37,7 @@
 |   |-- Cargo.toml        <--- Where we can define client dependencies.
 |   `-- src
 |       `-- main.rs       <--- Binary containing the client logic.
-|-- collector             <--- Logic for tests and the app to interface with infrastructure.
+|-- collector             <--- Logic for collecting data from an external source.
 |   |-- Cargo.toml        <--- Where we can define collector dependencies.
 |   `-- src
 |       `-- main.rs       <--- Binary containing the collector logic.
