@@ -1,8 +1,5 @@
-use anyhow::anyhow;
-use futures_util::StreamExt;
 use rusoto_core::Region;
-use serde_json::json;
-use std::io::{self, Read, Write};
+use std::io::{Read, Write};
 use tempfile::NamedTempFile;
 use uuid::Uuid;
 
@@ -32,7 +29,7 @@ async fn main() -> Result<(), anyhow::Error> {
     tmpfile.write_all(body.as_bytes())?;
 
     let folder = String::from("collector/");
-    let mut uuid = Uuid::new_v4().to_string();
+    let uuid = Uuid::new_v4().to_string();
     let ext = ".json";
     let object_key: String = key(folder, uuid, ext);
 
@@ -53,7 +50,7 @@ mod tests {
     #[test]
     fn test_key() {
         let folder = String::from("collector/");
-        let mut uuid = String::from("c7ca4c34-178b-4bc1-880b-c81690fcdfda");
+        let uuid = String::from("c7ca4c34-178b-4bc1-880b-c81690fcdfda");
         let ext = ".json";
         assert_eq!(
             key(folder, uuid, ext),

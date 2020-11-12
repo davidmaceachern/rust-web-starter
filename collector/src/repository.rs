@@ -1,7 +1,7 @@
 use rusoto_core::request::HttpClient;
 use rusoto_core::Region;
 use rusoto_credential::StaticProvider;
-use rusoto_s3::{CreateBucketRequest, DeleteBucketRequest, PutObjectRequest, S3Client, S3};
+use rusoto_s3::{CreateBucketRequest, PutObjectRequest, S3Client, S3};
 
 // struct ObjectKey(String);
 pub struct Bucket {
@@ -32,16 +32,16 @@ impl Bucket {
             .expect("Failed to create S3 bucket");
     }
 
-    pub async fn delete(&self) {
-        let req = DeleteBucketRequest {
-            bucket: self.name.clone(),
-            ..Default::default()
-        };
-        self.s3
-            .delete_bucket(req)
-            .await
-            .expect("Failed to delete S3 bucket");
-    }
+//    pub async fn delete(&self) {
+//        let req = DeleteBucketRequest {
+//            bucket: self.name.clone(),
+//            ..Default::default()
+//        };
+//        self.s3
+//            .delete_bucket(req)
+//            .await
+//            .expect("Failed to delete S3 bucket");
+//    }
 
     pub async fn put_object(&self, object_key: String, payload: Vec<u8>) {
         let req = PutObjectRequest {
