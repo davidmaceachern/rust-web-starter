@@ -41,6 +41,8 @@
 |   |-- Cargo.toml        <--- Where we can define collector dependencies.
 |   `-- src
 |       `-- main.rs       <--- Binary containing the collector logic.
+|       `-- phemex.rs     <--- Module containing the domain types.
+|       `-- repository.rs <--- Module containing the Minio (s3) logic.
 |-- infrastructure/       <--- Example of how to deploy to Kubernetes
 |-- README.md             <--- This file that you are reading.
 |-- run-dynamodb.sh       <--- Bash script to run a local Dynamodb container.
