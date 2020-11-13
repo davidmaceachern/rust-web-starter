@@ -72,6 +72,15 @@ Install new packages using `cargo add`.
 
 Format code using `cargo fmt`.
 
+## Continuous Integration
+
+### Github Actions
+
+Two actions are included:
+
+- `docker-publish` which currently publishes the collector container to the Github Container Registry whenever commits are pushed to the repository, read more [here](https://dev.to/davidmaceachern/how-to-fix-github-docker-containers-built-with-actions-162k).
+- `general` which runs `rust fmt` to keep the Rust code to commonly accepted standard upon pushing commits, fix issues with this build by running cargo fmt before commiting code.
+
 ## Deployment
 
 Kubernetes enables deployment to any provider that has Kubernetes installed. The following steps assume that a cluster has been installed.
