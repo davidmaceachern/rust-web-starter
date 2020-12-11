@@ -3,5 +3,6 @@
 members = [
   "./client",
   "./collector",
+  "./price-checker",
  ]
 

@@ -44,20 +44,30 @@
 |       `-- phemex.rs     <--- Module containing the domain types.
 |       `-- repository.rs <--- Module containing the Minio (s3) logic.
 |-- infrastructure/       <--- Example of how to deploy to Kubernetes
+|-- price-checker         <--- Checks the previous prices for any patterns 
+|   |-- Cargo.toml
+|   `-- src
+|      `-- main.rs
+|      `-- repository.rs
 |-- README.md             <--- This file that you are reading.
 |-- run-dynamodb.sh       <--- Bash script to run a local Dynamodb container.
 |-- run-s3.sh             <--- Bash script to run a local Minio (S3) container.
+|-- run-e2e.sh            <--- Bash script to run the collector and then the price checker.
 ```
 
 ## Development
 
-In seperate processes/terminal window run the services that we will be developing against.
+In separate processes/terminal window run the services that we will be developing against.
+
+To run the s3bucket server.
 
 `$ bash run-s3.sh`
 
-`$ bash run-dynamodb.sh` <----------------- todo
+To run the Rust application.
 
-Begin by interacting with these services using the code in `/client/src/main.rs`.
+`$ bash run-e2e.sh`
+
+`$ bash run-dynamodb.sh` <----------------- todo
 
 Run syntax checking on client code as we develop by using `cd collector && cargo watch -s 'cargo build'`
 

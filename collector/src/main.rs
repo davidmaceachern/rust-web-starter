@@ -18,7 +18,7 @@ async fn main() -> Result<(), anyhow::Error> {
     let access_key = String::from("AKIAIOSFODNN7EXAMPLE");
     let secret_key = String::from("wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY");
     let bucket = repository::Bucket::new(region, access_key, secret_key, "phemex");
-    bucket.create().await; // TODO: move this
+    // bucket.create().await; // TODO: move this
 
     let mut tmpfile = NamedTempFile::new()?;
     let mut open_tmpfile = tmpfile.reopen()?;
