@@ -19,8 +19,9 @@
 
 ## Features
 
-- Uses the [Tokio](https://tokio.rs/) runtime to collect data from the [Phemex Exchange](https://phemex.com/) and save it to
+- `Collector` fetches data from the [Phemex Exchange](https://phemex.com/) and saves it to
   a [Minio](https://min.io/) [S3](https://aws.amazon.com/s3/) bucket.
+- `Price-checker` lists and prints count of objects in the bucket.
 
 ## Goals
 
